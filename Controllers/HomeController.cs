@@ -12,12 +12,10 @@ namespace LearnAspCoreBest.Controllers
     public class HomeController : Controller
     {
         private readonly IEmployeeRepository _employeeRepository;
-        private readonly ILeadRepository _leadRepository;
 
-        public HomeController(IEmployeeRepository employeeRepository, ILeadRepository leadRepository)
+        public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
-            _leadRepository = leadRepository;
         }
         
 
@@ -40,11 +38,26 @@ namespace LearnAspCoreBest.Controllers
             return View(homeDetailsViewModel);
         }
 
-
-        public int Index3()
+        //get Create View
+        [HttpGet]
+        public ViewResult Create()
         {
-            return _leadRepository.GetLeads(1).Age;
+            return View();
         }
+
+        //post create view
+        [HttpPost]
+        public IActionResult Create(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                Employee newEmployee = _employeeRepository.Add(employee);
+                return RedirectToAction("Details", new { id = employee.Id });
+            }
+            return View();
+        }
+
+
 
     }
 }

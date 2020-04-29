@@ -23,8 +23,13 @@ using LearnAspCoreBest.Models;
 
 #line default
 #line hidden
+#line 3 "C:\Users\HP\Desktop\Projects\LearnAspCoreBest\LearnAspCoreBest\Views\_ViewImports.cshtml"
+using LearnAspCoreBest.Enums;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7091c65830b0329e613be026ede8a57552863778", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"89a529cf689994e0bbcc075288f21c0614c57581", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0e767c4ee52e550d2a347b1190950ae61479fc13", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

@@ -1,8 +1,10 @@
-﻿using LearnAspCoreBest.InterfaceRepositories;
+﻿using LearnAspCoreBest.Data;
+using LearnAspCoreBest.InterfaceRepositories;
 using LearnAspCoreBest.MockData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,10 +25,12 @@ namespace LearnAspCoreBest
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //register appdbcontext for Database
+            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DbConnection")));
             //adding MVC to your app
             services.AddMvc();
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
-            services.AddSingleton<ILeadRepository, MockLeadRepository>();
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+            //services.AddSingleton<ILeadRepository, MockLeadRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
